@@ -1,0 +1,2 @@
+No need to close this file
+with statement automatically will close this file

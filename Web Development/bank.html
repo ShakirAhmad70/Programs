@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        main {
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 0;
+            padding-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #666;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 150px;
+        }
+
+        .button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        .button:hover:before {
+            opacity: 1;
+        }
+
+        .button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .fullscreen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Shak Bank Of India</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="fullscreen">
+        <div class="container content">
+            <h1>Welcome to Shak Bank Of India</h1>
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" /><br />
+
+            <h2>Hello, <span id="customerName"></span> ❤️</h2>
+
+            <h3>Choose an option:</h3>
+            <div class="options-container">
+                <button onclick="deposit()" class="button"><span>Deposit</span></button>
+                <button onclick="withdraw()" class="button"><span>Withdraw</span></button>
+                <button onclick="knowBalance()" class="button"><span>Know Balance</span></button>
+                <button onclick="exit()" class="button"><span>Exit</span></button>
+            </div>
+
+            <div class="message" id="message"></div>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Shak Bank Of India. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        var customerName = "";
+        var balance = 0.0;
+
+        function deposit() {
+            var amount = parseFloat(prompt("Enter the deposit amount:"));
+            if (!isNaN(amount)) {
+                balance += amount;
+                showMessage("After deposit, balance is: " + balance);
+            } else {
+                showMessage("Invalid amount entered!", true);
+            }
+        }
+
+        function withdraw() {
+            var amount = parseFloat(prompt("Enter the withdrawal amount:"));
+            if (!isNaN(amount)) {
+                if (amount > balance) {
+                    showMessage("Insufficient funds, cannot perform the operation!", true);
+                } else {
+                    balance -= amount;
+                    showMessage("After withdrawal, balance is: " + balance);
+                }
+            } else {
+                showMessage("Invalid amount entered!", true);
+            }
+        }
+
+        function knowBalance() {
+            showMessage("Your current balance is: " + balance);
+        }
+
+        function exit() {
+            showMessage("Thanks for banking...!!");
+            customerName = "";
+            balance = 0.0;
+            document.getElementById("name").value = "";
+            document.getElementById("customerName").textContent = "";
+        }
+
+        function showMessage(message, isError = false) {
+            var messageElement = document.getElementById("message");
+            messageElement.innerHTML = message;
+            messageElement.style.color = isError ? "red" : "green";
+        }
+
+        document.getElementById("name").addEventListener("input", function (event) {
+            customerName = event.target.value;
+            document.getElementById("customerName").textContent = customerName;
+        });
+    </script>
+</body>
+</html>

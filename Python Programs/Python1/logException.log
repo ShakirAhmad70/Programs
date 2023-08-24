@@ -1,0 +1,44 @@
+06/08/2023 08:08:19 PM, @line:5 INFO:A new request came
+06/08/2023 08:08:23 PM, @line:18 INFO:Request processing completed
+
+06/08/2023 08:08:29 PM, @line:5 INFO:A new request came
+06/08/2023 08:08:32 PM, @line:18 INFO:Request processing completed
+
+06/08/2023 08:08:36 PM, @line:5 INFO:A new request came
+06/08/2023 08:09:02 PM, @line:5 INFO:A new request came
+06/08/2023 08:09:06 PM, @line:13 ERROR:division by zero
+Traceback (most recent call last):
+  File "c:\Users\dell\Desktop\PROGRAMS\Python Programs\Python By Durga\Python Logging\LoggingExceptions.py", line 10, in <module>
+    print("Division is: ", x/y)
+                           ~^~
+ZeroDivisionError: division by zero
+06/08/2023 08:09:06 PM, @line:18 INFO:Request processing completed
+
+06/08/2023 08:09:53 PM, @line:5 INFO:A new request came
+06/08/2023 08:09:55 PM, @line:16 ERROR:invalid literal for int() with base 10: '23w'
+Traceback (most recent call last):
+  File "c:\Users\dell\Desktop\PROGRAMS\Python Programs\Python By Durga\Python Logging\LoggingExceptions.py", line 8, in <module>
+    x = int(input("Enter first Number: "))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '23w'
+06/08/2023 08:09:55 PM, @line:18 INFO:Request processing completed
+
+06/08/2023 08:15:36 PM, @line:5 INFO:A new request came
+06/08/2023 08:15:45 PM, @line:16 ERROR:invalid literal for int() with base 10: 'qw'
+Traceback (most recent call last):
+  File "c:\Users\dell\Desktop\PROGRAMS\Python Programs\Python By Durga\Python Logging\LoggingExceptions.py", line 8, in <module>
+    x = int(input("Enter first Number: "))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'qw'
+06/08/2023 08:15:45 PM, @line:18 INFO:Request processing completed
+
+06/08/2023 08:15:54 PM, @line:5 INFO:A new request came
+06/08/2023 08:16:24 PM, @line:5 INFO:A new request came
+06/08/2023 08:16:31 PM, @line:16 ERROR:invalid literal for int() with base 10: '7y'
+Traceback (most recent call last):
+  File "c:\Users\dell\Desktop\PROGRAMS\Python Programs\Python By Durga\Python Logging\LoggingExceptions.py", line 9, in <module>
+    y = int(input("Enter Second Number: "))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '7y'
+06/08/2023 08:16:31 PM, @line:18 INFO:Request processing completed
+

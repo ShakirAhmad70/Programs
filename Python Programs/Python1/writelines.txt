@@ -1,0 +1,5 @@
+This
+is the
+writelines
+method's
+content
